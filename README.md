@@ -50,9 +50,18 @@ Turnover % =
 DIVIDE ([Departing Employees],[AVG # of Empoyees])
 
 **Key insights based on the analysis:**
-* 1. Retention remained stable at 95% over the final three years of the review period, with Directors exhibiting the   lowest retention levels and by department Finance and Marketing averaged approximately 95%. No significant differences were observed between remote and on-site roles.
+* 1. Retention remained stable at 95% over the final three years of the review period, with Directors exhibiting the
+lowest retention levels and by department Finance and Marketing averaged approximately 95%.
+No significant differences were observed between remote and on-site roles.
 
-* 2. Over the final three years of the examined period (2019–2022), the cumulative turnover rate was 11.3%, with the highest annual turnover recorded in 2022 at 5%. Directors exhibit the highest turnover rate at 16%, while the highest departmental turnover rate reaches 15%. Of all employee separations, 85% are voluntary and 15% are involuntary. The most common reasons for voluntary departures include better career opportunities, more flexible benefits, and higher compensation. These findings suggest that the company should prioritize competitive career development, benefits flexibility, and compensation strategies to retain high-performing employees.
+* 2. Over the final three years of the examined period (2019–2022),
+the cumulative turnover rate was 11.3%, with the highest annual turnover recorded in 2022 at 5%.
+Directors exhibit the highest turnover rate at 16%, while the highest departmental turnover rate reaches 15%.
+Of all employee separations, 85% are voluntary and 15% are involuntary.
+The most common reasons for voluntary departures include better career opportunities, more flexible benefits
+and higher compensation.
+These findings suggest that the company should prioritize competitive career development, benefits flexibility
+and compensation strategies to retain high-performing employees.
 
 ---
 
