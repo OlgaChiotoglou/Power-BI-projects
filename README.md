@@ -20,7 +20,7 @@ CALCULATE ([All employees],
   && (People_Fact[term_date] > LASTDATE ('Dates'[Date]) 
   || People_Fact[term_date] = BLANK())))
 
-* analysing retention:
+# analysing retention:
 
 Starting Headcount = 
 CALCULATE ([All employees], 
@@ -47,7 +47,7 @@ BLANK()
 
 * calculating turnover rate:
 Turnover % = 
-DIVIDE ([Departing Employees],[AVG # of Empoyees])
+DIVIDE ([Departing Employees],[AVG # of Empoyees])```
 
 **Key insights based on the analysis:**
 * 1. Retention remained stable at 95% over the final three years of the review period, with Directors exhibiting the
@@ -77,6 +77,7 @@ and compensation strategies to retain high-performing employees.
 
 **Measures used (DAX):**
 
+```dax
 # of Reviews = COUNT(winemag_Fact[points])
 Avg point = AVERAGE(winemag_Fact[points])
 Avg price = AVERAGE(winemag_Fact[price])
