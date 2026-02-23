@@ -1,10 +1,11 @@
 # Power BI projects
 
-### 1. HR Analytics Report (Microsoft Power BI)
+## 1. HR Analytics Report (Microsoft Power BI)
 
 **Business Objective:**
 * Analyze workforce trends and identify drivers of employee retention and turnover.
-* Key Highlights:
+
+**Key Highlights:**
 * Cleaned and transformed HR data using Power Query
 * Designed interactive dashboard with KPIs and drill-through analysis
 * Identified headcount trends and turnover patterns
@@ -13,15 +14,17 @@
 **Measures used (DAX):**
 ```dax
 All employees = DISTINCTCOUNT(People_Fact[employee_id])
+
 AVG # of Empoyees = ([Starting Headcount] + [HeadCount]) / 2
+
 HeadCount = 
 CALCULATE ([All employees],
   FILTER (People_Fact,People_Fact[hire_date]<=LASTDATE ('Dates'[Date]) 
   && (People_Fact[term_date] > LASTDATE ('Dates'[Date]) 
   || People_Fact[term_date] = BLANK())))
-
-* analysing retention:
-
+```
+**analysing retention:**
+```dax
 Starting Headcount = 
 CALCULATE ([All employees], 
   FILTER (People_Fact, People_Fact[hire_date]<FIRSTDATE('Dates'[Date]) 
@@ -44,30 +47,42 @@ SELECTEDVALUE('Dates'[Year])=CALCULATE(MAX('Dates'[Year]),
 ALLSELECTED('Dates')),[Retention],
 BLANK()
 )
-
-* calculating turnover rate:
+```
+**calculating turnover rate:**
+```dax
 Turnover % = 
 DIVIDE ([Departing Employees],[AVG # of Empoyees])
+```
 
 **Key insights based on the analysis:**
-* 1. Retention remained stable at 95% over the final three years of the review period, with Directors exhibiting the   lowest retention levels and by department Finance and Marketing averaged approximately 95%. No significant differences were observed between remote and on-site roles.
+1. Retention remained stable at 95% over the final three years of the review period, with Directors exhibiting the
+lowest retention levels and by department Finance and Marketing averaged approximately 95%.
+No significant differences were observed between remote and on-site roles.
 
-* 2. Over the final three years of the examined period (2019–2022), the cumulative turnover rate was 11.3%, with the highest annual turnover recorded in 2022 at 5%. Directors exhibit the highest turnover rate at 16%, while the highest departmental turnover rate reaches 15%. Of all employee separations, 85% are voluntary and 15% are involuntary. The most common reasons for voluntary departures include better career opportunities, more flexible benefits, and higher compensation. These findings suggest that the company should prioritize competitive career development, benefits flexibility, and compensation strategies to retain high-performing employees.
+2. Over the final three years of the examined period (2019–2022),
+the cumulative turnover rate was 11.3%, with the highest annual turnover recorded in 2022 at 5%.
+Directors exhibit the highest turnover rate at 16%, while the highest departmental turnover rate reaches 15%.
+Of all employee separations, 85% are voluntary and 15% are involuntary.
+The most common reasons for voluntary departures include better career opportunities, more flexible benefits
+and higher compensation.
+These findings suggest that the company should prioritize competitive career development, benefits flexibility
+and compensation strategies to retain high-performing employees.
 
 ---
 
-### 2. Wine Mag Report (Microsoft Power BI)
+## 2. Wine Mag Report (Microsoft Power BI)
 
 **Business Objective:**
 * Evaluate price performance, review reliability, and identify high-value wines across countries.
-* Key Analysis Areas:
+
+**Key Analysis Areas:**
 * Price volatility and rating distribution
 * Correlation between price and review scores
 * “Value for Money” segmentation
 * Identification of high-rating, low-price “hidden gems”
 
 **Measures used (DAX):**
-
+```dax
 # of Reviews = COUNT(winemag_Fact[points])
 Avg point = AVERAGE(winemag_Fact[points])
 Avg price = AVERAGE(winemag_Fact[price])
@@ -113,7 +128,7 @@ VAR TopVarietyTable =
     TOPN(1, ALLSELECTED(Variety_Dim[variety]), 
         [Max Point],DESC)
 RETURN
-    CONCATENATEX(TopVarietyTable, Variety_Dim[variety], ", ")
+CONCATENATEX(TopVarietyTable, Variety_Dim[variety], ", ")
 
 Top Variety Measure = 
 CALCULATE(
@@ -139,33 +154,44 @@ RANKX(
 )
 
 VFM Score = [Avg Point] / [AVG price]
+```
 
 **Key insights based on the analysis:**
-* 1. High price volatility. The bulk of our product price is concentrated in the low-to-mid-tier range (under 50). This means the prices of our sample don't "cluster" neatly around the average. 
-* 2. Switzerland records the highest average wine prices in the dataset, while France leads the global luxury segment with the highest single wine price observed.
-* 3. The dataset includes more than 140,000 total reviews. Among all countries, England achieves the highest average rating (points), indicating strong overall quality performance.
-* 4. A positive relationship exists between price and rating (average points). As median price increases, the average product rating also rises, suggesting that premium positioning is generally associated with higher perceived quality.
-* 5. The market remains heavily concentrated in the low-price, mid-rating segment, indicating that the majority of wines compete in accessible price tiers.
-* 6. While higher prices generally increase the probability of receiving higher ratings, a substantial number of high-rated, lower-priced “value gems” are also present in the dataset.
+1. High price volatility. The bulk of our product price is concentrated in the low-to-mid-tier range (under 50).
+     This means the prices of our sample don't "cluster" neatly around the average. 
+2. Switzerland records the highest average wine prices in the dataset,
+     while France leads the global luxury segment with the highest single wine price observed.
+3. The dataset includes more than 140,000 total reviews. Among all countries, England achieves the highest average rating (points),
+     indicating strong overall quality performance.
+4. A positive relationship exists between price and rating (average points).
+     As median price increases, the average product rating also rises, suggesting that premium positioning
+     is generally associated with higher perceived quality.
+5. The market remains heavily concentrated in the low-price, mid-rating segment, indicating that the majority
+     of wines compete in accessible price tiers.
+6. While higher prices generally increase the probability of receiving higher ratings,
+     a substantial number of high-rated, lower-priced “value gems” are also present in the dataset.
 
 ---
 
 ### 3. Sales Performance Analysis (Microsoft Power BI)
 
 **Business Objective:**
-*This report analyzes the sales performance of "E-Commerce Corp," a retail company specializing in electronic devices. The analysis covers the period from January 1, 2022, to December 31, 2022, evaluating performance across four geographical regions and three primary product categories: Electronics, Accessories, and Office.
-* Provide executive-level insights into revenue, profitability, and product performance.
-* Highlight Insights:
+This report analyzes the sales performance of "E-Commerce Corp," a retail company specializing in electronic devices. 
+The analysis covers the period from January 1, 2022, to December 31, 2022, evaluating performance across four geographical regions 
+and three primary product categories: Electronics, Accessories, and Office.
+Provides executive-level insights into revenue, profitability, and product performance.
+
+**Highlight Insights:**
 * Revenue and profit trends over time
 * Market share and sales stability analysis
 * Profit quality assessment by product category
 * Identification of high-margin vs high-volume products
 
 **Measures used (DAX):**
-
+```dax
 Avg Daily Sales = AVERAGEX(VALUES(dim_date[Date]),[Daily Sales])
-Avg Monthly Sales = 
-AVERAGEX(VALUES('dim_date'[YearMonth]),
+
+Avg Monthly Sales = AVERAGEX(VALUES('dim_date'[YearMonth]),
 CALCULATE([Total Sales]))
 
 Avg Product Lifespan = AVERAGEX(VALUES(dim_product[Product ID]),
@@ -269,22 +295,32 @@ VAR PrevYearSales =
         SAMEPERIODLASTYEAR('dim_date'[Date])
     )
 RETURN
-DIVIDE([Total Sales] - PrevYearSales, PrevYearSales)```
+DIVIDE([Total Sales] - PrevYearSales, PrevYearSales)
+```
 
 **Key insights based on the analysis:**
+
 **Category & Regional Insights**
 * Market Dominance: The Electronics category is the primary revenue driver, accounting for nearly 50% of the total market share.
-* Regional Distribution: Sales are exceptionally balanced across the company's four operating areas, with each region contributing an approximately equal share of total revenue.
-* Margin Consistency: Profit margins remain stable across all three product categories and all four regions, indicating a consistent pricing and cost structure company-wide.
+* Regional Distribution: Sales are exceptionally balanced across the company's four operating areas,
+  with each region contributing an approximately equal share of total revenue.
+* Margin Consistency: Profit margins remain stable across all three product categories and all four regions,
+  indicating a consistent pricing and cost structure company-wide.
+
 **Seasonal Trends & Forecasting**
-* Growth Trajectory: Based on current data, sales show a consistent increasing trend projected from 2022 through 2024 across all categories.
+* Growth Trajectory: Based on current data, sales show a consistent increasing trend projected
+  from 2022 through 2024 across all categories.
 * Monthly Performance Peaks: 
 Accessories: Experienced slight volatility throughout the year, peaking in May.
 Electronics: Maintained steady performance with a peak in April.
 Office: Demonstrated stable month-over-month results, with March being the highest-performing month.
+
 **Product-Level Analysis**
-* Top Performers: The 'Camera' is the company's flagship product, leading in both total sales and profit, followed closely by the 'Monitor'.
+* Top Performers: The 'Camera' is the company's flagship product, leading in both total sales and profit,
+  followed closely by the 'Monitor'.
 * Profitability Leader: While Cameras lead in volume and gross profit, 'Laptops' boast the highest Profit Margin.
-* Underperformers: 'Tablets', 'Headphones', and 'Keyboards' recorded the lowest sales figures. Specifically, 'Tablets' and 'Printers' rank lowest in terms of profit margin, suggesting a need for strategy reassessment in these segments.
+* Underperformers: 'Tablets', 'Headphones', and 'Keyboards' recorded the lowest sales figures.
+  Specifically, 'Tablets' and 'Printers' rank lowest in terms of profit margin, suggesting a need for strategy reassessment
+  in these segments.
 
 ---
